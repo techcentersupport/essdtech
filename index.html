@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TigerTech | ESSD #40 Technology Department</title>
+    <title>Tiger Technology Department | ESSD #40</title>
     <style>
         :root {
             --tiger-gold: #FFB81C;     /* Official Tiger Gold */
@@ -34,48 +34,82 @@
         header {
             background-color: var(--tiger-black);
             color: white;
-            padding: 2.5rem 1rem;
-            text-align: center;
+            padding: 2.5rem 2rem;
             border-bottom: 5px solid var(--tiger-gold);
         }
 
         .header-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
+            justify-content: flex-start;
+            gap: 2.5rem;
         }
 
         .logo-wrapper {
             background-color: white;
-            padding: 8px;
+            padding: 10px;
             border-radius: 50%;
-            border: 3px solid var(--tiger-gold);
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 4px solid var(--tiger-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            flex-shrink: 0;
         }
 
         .logo-wrapper img {
-            max-width: 130px;
-            height: auto;
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
             display: block;
             border-radius: 50%;
         }
 
+        .header-text {
+            text-align: left;
+        }
+
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.75rem;
             color: var(--tiger-gold);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.2rem;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.4rem;
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             color: #dddddd;
             font-weight: 500;
+        }
+
+        /* Responsive adjustments for mobile screens */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.25rem;
+            }
+            .header-text {
+                text-align: center;
+            }
+            .logo-wrapper img {
+                width: 130px;
+                height: 130px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1.05rem;
+            }
         }
 
         .container {
@@ -260,9 +294,9 @@
             <div class="logo-wrapper">
                 <img src="tigertech.png" alt="TigerTech Logo">
             </div>
-            <div>
-                <h1>TigerTech</h1>
-                <p>Excelsior Springs School District #40 Technology Department</p>
+            <div class="header-text">
+                <h1>Tiger Technology Department</h1>
+                <p>Excelsior Springs School District #40</p>
             </div>
         </div>
     </header>
@@ -382,7 +416,7 @@
     </div>
 
     <footer>
-        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | TigerTech</p>
+        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
     </footer>
 
 </body>
