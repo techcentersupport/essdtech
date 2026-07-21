@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESSD Technology Department | Excelsior Springs School District</title>
+    <title>TigerTech | ESSD #40 Technology Department</title>
     <style>
         :root {
-            --primary-color: #003366; /* District Blue */
-            --accent-color: #d9534f;  /* Action Red */
-            --light-bg: #f8f9fa;
-            --dark-text: #212529;
-            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --tiger-gold: #FFB81C;     /* Official Tiger Gold */
+            --tiger-gold-hover: #e0a012;
+            --tiger-black: #111111;    /* Deep Black */
+            --tiger-dark-gray: #1e1e1e;
+            --light-bg: #f4f5f7;
+            --dark-text: #222222;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -22,7 +24,7 @@
 
         body {
             color: var(--dark-text);
-            background-color: #f0f2f5;
+            background-color: var(--light-bg);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -30,59 +32,98 @@
         }
 
         header {
-            background-color: var(--primary-color);
+            background-color: var(--tiger-black);
             color: white;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
+            border-bottom: 5px solid var(--tiger-gold);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .logo-wrapper {
+            background-color: white;
+            padding: 8px;
+            border-radius: 50%;
+            border: 3px solid var(--tiger-gold);
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo-wrapper img {
+            max-width: 130px;
+            height: auto;
+            display: block;
+            border-radius: 50%;
         }
 
         header h1 {
             font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            color: var(--tiger-gold);
+            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
         }
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: #dddddd;
+            font-weight: 500;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
+            max-width: 950px;
+            margin: 2.5rem auto;
             padding: 0 1rem;
             flex: 1;
         }
 
         .hero-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 2.5rem;
             text-align: center;
             box-shadow: var(--card-shadow);
             margin-bottom: 2rem;
-            border-top: 5px solid var(--primary-color);
+            border-top: 5px solid var(--tiger-black);
         }
 
         .hero-card h2 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            color: var(--tiger-black);
+            font-size: 1.8rem;
+        }
+
+        .hero-card p {
+            color: #555;
+            font-size: 1.1rem;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            font-size: 1.25rem;
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+            font-size: 1.2rem;
             font-weight: bold;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 6px;
             text-decoration: none;
-            transition: background-color 0.2s ease;
-            margin-top: 1rem;
+            transition: all 0.2s ease;
+            margin-top: 1.5rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
         }
 
         .cta-button:hover {
-            background-color: #c9302c;
+            background-color: var(--tiger-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
         .grid {
@@ -93,14 +134,15 @@
 
         .card {
             background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 1.75rem;
+            border-radius: 10px;
             box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--tiger-gold);
         }
 
         .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.75rem;
+            color: var(--tiger-black);
+            margin-bottom: 1rem;
             border-bottom: 2px solid var(--light-bg);
             padding-bottom: 0.5rem;
         }
@@ -110,71 +152,83 @@
         }
 
         .contact-list li {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
+            margin-bottom: 0.85rem;
         }
 
         .contact-list a {
-            color: var(--primary-color);
+            color: var(--tiger-black);
+            font-weight: 600;
             text-decoration: none;
         }
 
         .contact-list a:hover {
+            color: var(--tiger-gold-hover);
             text-decoration: underline;
         }
 
         footer {
-            background-color: #e9ecef;
+            background-color: var(--tiger-black);
+            color: #aaaaaa;
             text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-top: 2rem;
+            padding: 1.75rem;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            border-top: 3px solid var(--tiger-gold);
         }
 
         footer a {
-            color: var(--primary-color);
+            color: var(--tiger-gold);
             text-decoration: none;
             font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Excelsior Springs School District</h1>
-        <p>Technology Department</p>
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <img src="tigertech.png" alt="TigerTech Logo">
+            </div>
+            <div>
+                <h1>TigerTech</h1>
+                <p>Excelsior Springs School District #40 Technology Department</p>
+            </div>
+        </div>
     </header>
 
     <div class="container">
         
-        <!-- Quick Help Section -->
+        <!-- Main Help Desk Portal CTA -->
         <section class="hero-card">
             <h2>Need Technical Support?</h2>
-            <p>Submit or track a support ticket through our official Help Desk portal.</p>
+            <p>Submit or track a support ticket through the official ESSD Help Desk portal.</p>
             <a href="https://excelsiorssd.gethelphss.com/UI/dashboard" class="cta-button" target="_blank" rel="noopener">
                 Access Technology Help Desk &rarr;
             </a>
         </section>
 
-        <!-- Details Grid -->
+        <!-- Details & Location Grid -->
         <div class="grid">
             
             <!-- Contact Info -->
             <div class="card">
                 <h3>Contact & Location</h3>
                 <ul class="contact-list">
-                    <li>📍 <strong>Address:</strong>&nbsp;113 Line St, Excelsior Springs, MO 64024</li>
-                    <li>📞 <strong>Phone:</strong>&nbsp;<a href="tel:8166301280">816-630-1280</a></li>
-                    <li>🌐 <strong>District Portal:</strong>&nbsp;<a href="https://essd40.org" target="_blank" rel="noopener">essd40.org</a></li>
+                    <li>📍 <strong>Address:</strong><br>113 Line St, Excelsior Springs, MO 64024</li>
+                    <li>📞 <strong>Phone:</strong><br><a href="tel:8166301280">816-630-1280</a></li>
+                    <li>🌐 <strong>District Web:</strong><br><a href="https://essd40.org" target="_blank" rel="noopener">essd40.org</a></li>
                 </ul>
             </div>
 
-            <!-- Quick Links / Hours -->
+            <!-- About / Services -->
             <div class="card">
-                <h3>Services & Resources</h3>
-                <p>We support staff and student devices, network infrastructure, classroom technology, and software access across ESSD #40.</p>
+                <h3>Department Overview</h3>
+                <p>TigerTech powers classroom innovation and district infrastructure—supporting staff and student devices, network security, software access, and hardware maintenance across all ESSD #40 schools.</p>
             </div>
 
         </div>
@@ -182,7 +236,7 @@
     </div>
 
     <footer>
-        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a></p>
+        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | TigerTech</p>
     </footer>
 
 </body>
