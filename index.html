@@ -79,7 +79,7 @@
         }
 
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 2.5rem auto;
             padding: 0 1rem;
             flex: 1;
@@ -91,7 +91,7 @@
             padding: 2.5rem;
             text-align: center;
             box-shadow: var(--card-shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-top: 5px solid var(--tiger-black);
         }
 
@@ -126,7 +126,73 @@
             box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
-        .grid {
+        .section-heading {
+            font-size: 1.75rem;
+            color: var(--tiger-black);
+            margin-bottom: 1.25rem;
+            border-bottom: 3px solid var(--tiger-gold);
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        /* Staff Grid */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .staff-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--tiger-gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .staff-header {
+            margin-bottom: 0.75rem;
+        }
+
+        .staff-name {
+            font-size: 1.25rem;
+            color: var(--tiger-black);
+            font-weight: bold;
+        }
+
+        .staff-role {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        .staff-details {
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .staff-details li {
+            margin-bottom: 0.4rem;
+        }
+
+        .staff-details a {
+            color: var(--tiger-black);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .staff-details a:hover {
+            color: var(--tiger-gold-hover);
+            text-decoration: underline;
+        }
+
+        /* Overview & Location Grid */
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
@@ -137,7 +203,7 @@
             padding: 1.75rem;
             border-radius: 10px;
             box-shadow: var(--card-shadow);
-            border-left: 4px solid var(--tiger-gold);
+            border-left: 4px solid var(--tiger-black);
         }
 
         .card h3 {
@@ -212,15 +278,95 @@
             </a>
         </section>
 
+        <!-- Staff Directory Section -->
+        <section>
+            <h2 class="section-heading">Technology Staff Directory</h2>
+            <div class="staff-grid">
+                
+                <!-- Jon Coleman -->
+                <div class="staff-card">
+                    <div>
+                        <div class="staff-header">
+                            <div class="staff-name">Jon Coleman</div>
+                            <div class="staff-role">Director of Technology</div>
+                        </div>
+                    </div>
+                    <ul class="staff-details">
+                        <li>📞 <strong>Office:</strong> <a href="tel:8166301280">816-630-1280</a> Ext. 8401</li>
+                        <li>✉️ <strong>Email:</strong> <a href="mailto:jcoleman@essd40.org">jcoleman@essd40.org</a></li>
+                    </ul>
+                </div>
+
+                <!-- Lee Jarman -->
+                <div class="staff-card">
+                    <div>
+                        <div class="staff-header">
+                            <div class="staff-name">Lee Jarman</div>
+                            <div class="staff-role">Network Administrator</div>
+                        </div>
+                    </div>
+                    <ul class="staff-details">
+                        <li>📞 <strong>Office:</strong> <a href="tel:8166301280">816-630-1280</a> Ext. 8404</li>
+                        <li>📱 <strong>Cell:</strong> <a href="tel:8167189547">816-718-9547</a></li>
+                        <li>✉️ <strong>Email:</strong> <a href="mailto:ljarman@essd40.org">ljarman@essd40.org</a></li>
+                    </ul>
+                </div>
+
+                <!-- Braden Carpenter -->
+                <div class="staff-card">
+                    <div>
+                        <div class="staff-header">
+                            <div class="staff-name">Braden Carpenter</div>
+                            <div class="staff-role">High School Technician</div>
+                        </div>
+                    </div>
+                    <ul class="staff-details">
+                        <li>📱 <strong>Phone:</strong> <a href="tel:8163650965">816-365-0965</a></li>
+                        <li>✉️ <strong>Email:</strong> <a href="mailto:bcarpenter@essd40.org">bcarpenter@essd40.org</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tim Vanderheiden -->
+                <div class="staff-card">
+                    <div>
+                        <div class="staff-header">
+                            <div class="staff-name">Tim Vanderheiden</div>
+                            <div class="staff-role">Middle School Technician</div>
+                        </div>
+                    </div>
+                    <ul class="staff-details">
+                        <li>📱 <strong>Phone:</strong> <a href="tel:8168772842">816-877-2842</a></li>
+                        <li>✉️ <strong>Email:</strong> <a href="mailto:tvanderheiden@essd40.org">tvanderheiden@essd40.org</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sam Curtis -->
+                <div class="staff-card">
+                    <div>
+                        <div class="staff-header">
+                            <div class="staff-name">Sam Curtis</div>
+                            <div class="staff-role">Elementary Schools Technician</div>
+                        </div>
+                    </div>
+                    <ul class="staff-details">
+                        <li>📍 <em>Elkhorn, Lewis, & Cornerstone</em></li>
+                        <li>📱 <strong>Phone:</strong> <a href="tel:8167860604">816-786-0604</a></li>
+                        <li>✉️ <strong>Email:</strong> <a href="mailto:scurtis@essd40.org">scurtis@essd40.org</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Details & Location Grid -->
-        <div class="grid">
+        <div class="info-grid">
             
             <!-- Contact Info -->
             <div class="card">
                 <h3>Contact & Location</h3>
                 <ul class="contact-list">
                     <li>📍 <strong>Address:</strong><br>113 Line St, Excelsior Springs, MO 64024</li>
-                    <li>📞 <strong>Phone:</strong><br><a href="tel:8166301280">816-630-1280</a></li>
+                    <li>📞 <strong>Main Phone:</strong><br><a href="tel:8166301280">816-630-1280</a></li>
                     <li>🌐 <strong>District Web:</strong><br><a href="https://essd40.org" target="_blank" rel="noopener">essd40.org</a></li>
                 </ul>
             </div>
