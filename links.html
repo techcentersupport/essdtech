@@ -34,37 +34,37 @@
         header {
             background-color: var(--tiger-black);
             color: white;
-            padding: 2rem 2rem;
+            padding: 2.5rem 2rem;
             border-bottom: 5px solid var(--tiger-gold);
         }
 
         .header-content {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .logo-wrapper img {
-            width: 120px;
+            width: 160px;
             height: auto;
-            max-height: 120px;
+            max-height: 160px;
             object-fit: contain;
             display: block;
         }
 
         .header-text h1 {
-            font-size: 2.25rem;
+            font-size: 2.75rem;
             color: var(--tiger-gold);
             line-height: 1.15;
             font-weight: 800;
         }
 
         .header-text p {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             color: #dddddd;
         }
 
@@ -75,7 +75,7 @@
         }
 
         .nav-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 1rem;
             display: flex;
@@ -97,7 +97,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 2.5rem auto;
             padding: 0 1rem;
             flex: 1;
@@ -112,10 +112,10 @@
             display: inline-block;
         }
 
-        /* Portal Cards Grid */
+        /* Portal Cards Grid - Set to 3 Columns */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 cards per row */
             gap: 1.5rem;
         }
 
@@ -139,7 +139,7 @@
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
         }
 
-        /* Card Image Container (Supports future upload images) */
+        /* Card Image Container */
         .card-img-wrapper {
             width: 80px;
             height: 80px;
@@ -159,7 +159,6 @@
             object-fit: contain;
         }
 
-        /* Fallback SVG Icon if no custom image is uploaded */
         .placeholder-icon {
             font-size: 2.2rem;
             color: var(--tiger-black);
@@ -195,13 +194,33 @@
             color: var(--tiger-black);
         }
 
-        @media (max-width: 768px) {
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 2rem 1rem;
+            }
             .header-content {
                 flex-direction: column;
                 text-align: center;
             }
+            .logo-wrapper img {
+                width: 130px;
+                max-height: 130px;
+            }
+            .header-text h1 {
+                font-size: 2rem;
+            }
             .nav-container {
                 justify-content: center;
+            }
+            .links-grid {
+                grid-template-columns: 1fr; /* 1 column on smartphones */
             }
         }
 
@@ -236,7 +255,7 @@
         </div>
     </header>
 
-    <!-- Simple Top Navigation -->
+    <!-- Top Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-link">Home & Support</a>
@@ -252,7 +271,6 @@
             <!-- School Email -->
             <a href="https://mail.google.com" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'email.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="email.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="School Email">
                     <span class="placeholder-icon" style="display:none;">📧</span>
                 </div>
@@ -264,7 +282,6 @@
             <!-- Google Drive -->
             <a href="https://drive.google.com" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'drive.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="drive.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Google Drive">
                     <span class="placeholder-icon" style="display:none;">📁</span>
                 </div>
@@ -276,7 +293,6 @@
             <!-- PowerSchool -->
             <a href="https://estigers.powerschool.com/public/" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'powerschool.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="powerschool.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="PowerSchool">
                     <span class="placeholder-icon" style="display:none;">📊</span>
                 </div>
@@ -288,7 +304,6 @@
             <!-- Clever -->
             <a href="https://clever.com/oauth/authorize?channel=clever&client_id=4c63c1cf623dce82caac&confirmed=true&district_id=57d6ccf56d96fb0100000291&redirect_uri=https%3A%2F%2Fclever.com%2Fin%2Fauth_callback&response_type=code&state=62cd6e9f4e088aaee93b1dcfefbba1c4ff60eef0523cc4e61fbdaede942af0df" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'clever.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="clever.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Clever">
                     <span class="placeholder-icon" style="display:none;">🔑</span>
                 </div>
@@ -300,7 +315,6 @@
             <!-- Canvas -->
             <a href="https://excelsiorsprings.instructure.com/login/canvas" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'canvas.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="canvas.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Canvas">
                     <span class="placeholder-icon" style="display:none;">🎨</span>
                 </div>
@@ -312,7 +326,6 @@
             <!-- Seesaw -->
             <a href="https://seesaw.com/" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'seesaw.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="seesaw.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Seesaw">
                     <span class="placeholder-icon" style="display:none;">💡</span>
                 </div>
@@ -324,7 +337,6 @@
             <!-- IXL -->
             <a href="https://www.ixl.com/signin" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'ixl.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="ixl.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="IXL Learning">
                     <span class="placeholder-icon" style="display:none;">✏️</span>
                 </div>
@@ -336,7 +348,6 @@
             <!-- Follett Destiny -->
             <a href="https://essd40library.follettdestiny.com/portal?appId=destiny-RKLR-CXKB" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'destiny.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="destiny.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Follett Destiny">
                     <span class="placeholder-icon" style="display:none;">📚</span>
                 </div>
@@ -348,7 +359,6 @@
             <!-- Pay Device Insurance -->
             <a href="https://essd40.revtrak.net/" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <!-- REPLACE 'revtrak.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
                     <img src="revtrak.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Pay Device Insurance">
                     <span class="placeholder-icon" style="display:none;">💳</span>
                 </div>
