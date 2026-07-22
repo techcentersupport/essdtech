@@ -214,8 +214,35 @@
             justify-content: space-between;
         }
 
+        /* Staff Profile Picture Styles */
+        .staff-photo-wrapper {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 1rem auto;
+            background-color: #f0f0f0;
+            border: 3px solid var(--tiger-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .staff-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-photo-placeholder {
+            font-size: 2.5rem;
+            color: var(--tiger-dark-gray);
+        }
+
         .staff-header {
             margin-bottom: 0.75rem;
+            text-align: center;
         }
 
         .staff-name {
@@ -234,6 +261,9 @@
         .staff-details {
             list-style: none;
             font-size: 0.95rem;
+            border-top: 1px solid #eee;
+            padding-top: 0.8rem;
+            margin-top: 0.5rem;
         }
 
         .staff-details li {
@@ -354,6 +384,11 @@
                 <!-- Jon Coleman -->
                 <div class="staff-card">
                     <div>
+                        <div class="staff-photo-wrapper">
+                            <!-- UPLOAD 'jcoleman.jpg' IN THE FUTURE -->
+                            <img src="jcoleman.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Jon Coleman">
+                            <span class="staff-photo-placeholder" style="display:none;">👤</span>
+                        </div>
                         <div class="staff-header">
                             <div class="staff-name">Jon Coleman</div>
                             <div class="staff-role">Director of Technology</div>
@@ -368,6 +403,11 @@
                 <!-- Lee Jarman -->
                 <div class="staff-card">
                     <div>
+                        <div class="staff-photo-wrapper">
+                            <!-- UPLOAD 'ljarman.jpg' IN THE FUTURE -->
+                            <img src="ljarman.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Lee Jarman">
+                            <span class="staff-photo-placeholder" style="display:none;">👤</span>
+                        </div>
                         <div class="staff-header">
                             <div class="staff-name">Lee Jarman</div>
                             <div class="staff-role">Network Administrator</div>
@@ -383,6 +423,11 @@
                 <!-- Braden Carpenter -->
                 <div class="staff-card">
                     <div>
+                        <div class="staff-photo-wrapper">
+                            <!-- UPLOAD 'bcarpenter.jpg' IN THE FUTURE -->
+                            <img src="bcarpenter.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Braden Carpenter">
+                            <span class="staff-photo-placeholder" style="display:none;">👤</span>
+                        </div>
                         <div class="staff-header">
                             <div class="staff-name">Braden Carpenter</div>
                             <div class="staff-role">High School Technician</div>
@@ -397,6 +442,11 @@
                 <!-- Tim Vanderheiden -->
                 <div class="staff-card">
                     <div>
+                        <div class="staff-photo-wrapper">
+                            <!-- UPLOAD 'tvanderheiden.jpg' IN THE FUTURE -->
+                            <img src="tvanderheiden.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Tim Vanderheiden">
+                            <span class="staff-photo-placeholder" style="display:none;">👤</span>
+                        </div>
                         <div class="staff-header">
                             <div class="staff-name">Tim Vanderheiden</div>
                             <div class="staff-role">Middle School Technician</div>
@@ -411,6 +461,11 @@
                 <!-- Sam Curtis -->
                 <div class="staff-card">
                     <div>
+                        <div class="staff-photo-wrapper">
+                            <!-- UPLOAD 'scurtis.jpg' IN THE FUTURE -->
+                            <img src="scurtis.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Sam Curtis">
+                            <span class="staff-photo-placeholder" style="display:none;">👤</span>
+                        </div>
                         <div class="staff-header">
                             <div class="staff-name">Sam Curtis</div>
                             <div class="staff-role">Elementary Schools Technician</div>
@@ -450,7 +505,7 @@
     </div>
 
     <footer>
-        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Technology Department</p>
+        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
     </footer>
 
 </body>
