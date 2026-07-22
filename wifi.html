@@ -72,6 +72,7 @@
         nav {
             background-color: var(--tiger-dark-gray);
             border-bottom: 2px solid #333;
+            position: relative;
         }
 
         .nav-container {
@@ -79,8 +80,13 @@
             margin: 0 auto;
             padding: 0 1rem;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
         }
 
         .nav-link {
@@ -95,6 +101,19 @@
         .nav-link:hover, .nav-link.active {
             background-color: var(--tiger-gold);
             color: var(--tiger-black);
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: right;
         }
 
         .container {
@@ -260,8 +279,24 @@
             .header-text h1 {
                 font-size: 2rem;
             }
-            .nav-container {
-                justify-content: center;
+
+            /* Mobile Menu Styles */
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-menu.show {
+                display: flex;
+            }
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid #333;
+                padding: 1rem;
             }
         }
 
@@ -296,12 +331,15 @@
         </div>
     </header>
 
-    <!-- Top Navigation Menu -->
+    <!-- Top Navigation Menu with Mobile Toggle -->
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-link">Home & Support</a>
-            <a href="links.html" class="nav-link">Staff & Student Links</a>
-            <a href="wifi.html" class="nav-link active">Wi-Fi & Security</a>
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">☰ Menu</button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home & Support</a>
+                <a href="links.html" class="nav-link">Staff & Student Links</a>
+                <a href="wifi.html" class="nav-link active">Wi-Fi & Security</a>
+            </div>
         </div>
     </nav>
 
@@ -343,7 +381,6 @@
             <p>To access web pages securely through <strong>ESSD-Public</strong> without security warnings or blocked sites, personal devices must have the official Securly SSL certificate installed.</p>
             
             <!-- Direct Download Button for Certificate File -->
-            <!-- Note: Upload your securly_ca_2026.crt file to your repository root -->
             <a href="securly_ca_2026.crt" download class="btn-download">
                 📥 Download Securly Certificate (.crt)
             </a>
@@ -371,6 +408,16 @@
     <footer>
         <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
     </footer>
+
+    <!-- Script for Mobile Menu Toggle -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
