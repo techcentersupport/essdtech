@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Do I? Guides | ESSD #40 TigerTech</title>
+    <style>
+        :root {
+            --tiger-gold: #FFB81C;
+            --tiger-gold-hover: #e0a012;
+            --tiger-black: #111111;
+            --tiger-dark-gray: #1e1e1e;
+            --light-bg: #f4f5f7;
+            --dark-text: #222222;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--tiger-black);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-bottom: 5px solid var(--tiger-gold);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2.5rem;
+        }
+
+        .logo-wrapper img {
+            width: 160px;
+            height: auto;
+            max-height: 160px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-text h1 {
+            font-size: 2.75rem;
+            color: var(--tiger-gold);
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .header-text p {
+            font-size: 1.25rem;
+            color: #dddddd;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--tiger-dark-gray);
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .page-heading {
+            font-size: 1.8rem;
+            color: var(--tiger-black);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--tiger-gold);
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        /* Search Section */
+        .search-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            border-top: 5px solid var(--tiger-black);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1.1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .search-box:focus {
+            border-color: var(--tiger-gold);
+        }
+
+        /* Category Filter Buttons */
+        .category-filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #e0e0e0;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--tiger-gold);
+            color: var(--tiger-black);
+        }
+
+        /* Guides Cards Grid */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--tiger-gold);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .guide-badge {
+            align-self: flex-start;
+            background-color: var(--tiger-black);
+            color: var(--tiger-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .guide-title {
+            font-size: 1.3rem;
+            color: var(--tiger-black);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .guide-steps {
+            list-style: decimal;
+            padding-left: 1.2rem;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .guide-steps li {
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            color: #666;
+            box-shadow: var(--card-shadow);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-wrapper img {
+                width: 130px;
+                max-height: 130px;
+            }
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-menu.show {
+                display: flex;
+            }
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid #333;
+                padding: 1rem;
+            }
+        }
+
+        footer {
+            background-color: var(--tiger-black);
+            color: #aaaaaa;
+            text-align: center;
+            padding: 1.75rem;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            border-top: 3px solid var(--tiger-gold);
+        }
+
+        footer a {
+            color: var(--tiger-gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <img src="tigerhead.svg" alt="Tiger Technology Department Logo">
+            </div>
+            <div class="header-text">
+                <h1>Tiger Technology Department</h1>
+                <p>Excelsior Springs School District #40</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Menu with Mobile Toggle -->
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">☰ Menu</button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home & Support</a>
+                <a href="links.html" class="nav-link">Staff & Student Links</a>
+                <a href="wifi.html" class="nav-link">Wi-Fi & Security</a>
+                <a href="howdoi.html" class="nav-link active">How Do I?</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-heading">How Do I? Knowledge Base</h2>
+
+        <!-- Interactive Search & Category Filter Section -->
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-box" placeholder="🔍 Search help topics (e.g., password, Microsoft, printing, Wi-Fi)...">
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All Topics</button>
+                <button class="filter-btn" data-category="accounts">Accounts & Passwords</button>
+                <button class="filter-btn" data-category="apps">Software & Apps</button>
+                <button class="filter-btn" data-category="hardware">Hardware & Printing</button>
+                <button class="filter-btn" data-category="network">Network & Wi-Fi</button>
+            </div>
+        </div>
+
+        <!-- Help Guides Cards -->
+        <div class="guides-grid" id="guides-grid">
+
+            <!-- Card 1: Change Password -->
+            <div class="guide-card" data-category="accounts" data-keywords="change reset password account login credentials google switch">
+                <span class="guide-badge">Accounts & Passwords</span>
+                <h3 class="guide-title">🔑 How do I change my network password?</h3>
+                <ol class="guide-steps">
+                    <li>Log into any district Windows PC or open your Google Account settings.</li>
+                    <li>For district domain accounts, press <strong>Ctrl + Alt + Delete</strong> on a desktop PC and select <strong>Change a password</strong>.</li>
+                    <li>If you are locked out or forgot your password, contact your school technician or submit a Help Desk ticket.</li>
+                </ol>
+            </div>
+
+            <!-- Card 2: Log into Microsoft Word/365 -->
+            <div class="guide-card" data-category="apps" data-keywords="microsoft word office 365 login office excel powerpoint sign in">
+                <span class="guide-badge">Software & Apps</span>
+                <h3 class="guide-title">📄 How do I log into Microsoft Word / Office 365?</h3>
+                <ol class="guide-steps">
+                    <li>Open Microsoft Word or navigate to <strong>office.com</strong>.</li>
+                    <li>Click <strong>Sign In</strong> in the top right corner.</li>
+                    <li>Enter your full school email address (e.g., <em>user@essd40.org</em>).</li>
+                    <li>Use your standard district password to complete authentication.</li>
+                </ol>
+            </div>
+
+            <!-- Card 3: Connect to Wi-Fi -->
+            <div class="guide-card" data-category="network" data-keywords="wifi wi-fi internet connect tigers essd-public personal device phone securly certificate">
+                <span class="guide-badge">Network & Wi-Fi</span>
+                <h3 class="guide-title">📶 How do I connect my device to Wi-Fi?</h3>
+                <ol class="guide-steps">
+                    <li><strong>School Devices:</strong> Connect to <strong>TIGERS</strong> (connects automatically).</li>
+                    <li><strong>Personal Devices:</strong> Connect to <strong>ESSD-Public</strong> (no password required).</li>
+                    <li>Visit our <a href="wifi.html" style="color:var(--tiger-black); font-weight:bold;">Wi-Fi & Security page</a> to download the required Securly SSL Certificate for personal web access.</li>
+                </ol>
+            </div>
+
+            <!-- Card 4: Connect to a Printer -->
+            <div class="guide-card" data-category="hardware" data-keywords="print printer paper papercut add printer copy scan print jobs">
+                <span class="guide-badge">Hardware & Printing</span>
+                <h3 class="guide-title">🖨️ How do I add or print to a district printer?</h3>
+                <ol class="guide-steps">
+                    <li>Ensure you are connected to the district network.</li>
+                    <li>Open <strong>PaperCut / Mobility Print</strong> or select <em>Add Printer</em> from your computer settings.</li>
+                    <li>Search for your building's printer name (e.g., <em>HS-Copier-Main</em>).</li>
+                    <li>Select print and authenticate with your district username if prompted.</li>
+                </ol>
+            </div>
+
+            <!-- Card 5: Submit a Ticket -->
+            <div class="guide-card" data-category="apps" data-keywords="ticket help desk support broken fix repair technician gethelp">
+                <span class="guide-badge">Software & Apps</span>
+                <h3 class="guide-title">🎫 How do I submit a Help Desk ticket?</h3>
+                <ol class="guide-steps">
+                    <li>Visit the official <a href="https://excelsiorssd.gethelphss.com/UI/dashboard" target="_blank" style="color:var(--tiger-black); font-weight:bold;">ESSD Help Desk Portal</a>.</li>
+                    <li>Sign in using your district Google account.</li>
+                    <li>Click <strong>New Ticket</strong>, describe the issue, and select your school location.</li>
+                </ol>
+            </div>
+
+            <!-- Card 6: Chromebook Touchpad / Display Issues -->
+            <div class="guide-card" data-category="hardware" data-keywords="chromebook screen frozen restart reset restart reboot touchpad keyboard">
+                <span class="guide-badge">Hardware & Printing</span>
+                <h3 class="guide-title">💻 How do I fix a frozen Chromebook?</h3>
+                <ol class="guide-steps">
+                    <li>Perform a hard reset by holding the <strong>Refresh key ↻</strong> and pressing the <strong>Power key ⏻</strong>.</li>
+                    <li>Release <strong>Refresh</strong> when the Chromebook starts up.</li>
+                    <li>If the issue persists, bring the device to your building technician.</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <!-- Message when no match is found -->
+        <div class="no-results" id="no-results">
+            🔍 No matching help topics found. Try searching for a different keyword or <a href="index.html" style="color:var(--tiger-black); font-weight:bold;">submit a support ticket</a>!
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
+    </footer>
+
+    <!-- Interactive Search & Mobile Menu Script -->
+    <script>
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Search & Filter Logic
+        const searchInput = document.getElementById('search-input');
+        const guideCards = document.querySelectorAll('.guide-card');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const noResults = document.getElementById('no-results');
+
+        let activeCategory = 'all';
+
+        function filterGuides() {
+            const query = searchInput.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            guideCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                const cardText = card.innerText.toLowerCase();
+
+                const matchesSearch = cardText.includes(query) || keywords.includes(query);
+                const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        searchInput.addEventListener('input', filterGuides);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCategory = btn.getAttribute('data-category');
+                filterGuides();
+            });
+        });
+    </script>
+
+</body>
+</html>
