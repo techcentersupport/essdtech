@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi Access & Certificate | ESSD #40 TigerTech</title>
+    <style>
+        :root {
+            --tiger-gold: #FFB81C;
+            --tiger-gold-hover: #e0a012;
+            --tiger-black: #111111;
+            --tiger-dark-gray: #1e1e1e;
+            --light-bg: #f4f5f7;
+            --dark-text: #222222;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--tiger-black);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-bottom: 5px solid var(--tiger-gold);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2.5rem;
+        }
+
+        .logo-wrapper img {
+            width: 160px;
+            height: auto;
+            max-height: 160px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-text h1 {
+            font-size: 2.75rem;
+            color: var(--tiger-gold);
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .header-text p {
+            font-size: 1.25rem;
+            color: #dddddd;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--tiger-dark-gray);
+            border-bottom: 2px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .page-heading {
+            font-size: 1.8rem;
+            color: var(--tiger-black);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--tiger-gold);
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        /* Wi-Fi Networks Grid */
+        .wifi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .wifi-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--tiger-gold);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wifi-card.public {
+            border-top-color: var(--tiger-black);
+        }
+
+        .wifi-badge {
+            display: inline-block;
+            align-self: flex-start;
+            background-color: #eee;
+            color: #333;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .wifi-card h3 {
+            font-size: 1.6rem;
+            color: var(--tiger-black);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .wifi-card p {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .wifi-details {
+            list-style: none;
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+
+        .wifi-details li {
+            margin-bottom: 0.4rem;
+        }
+
+        .wifi-details li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Certificate Download Section */
+        .cert-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 6px solid var(--tiger-gold);
+            margin-bottom: 2rem;
+        }
+
+        .cert-card h3 {
+            font-size: 1.5rem;
+            color: var(--tiger-black);
+            margin-bottom: 0.75rem;
+        }
+
+        .cert-card p {
+            color: #444;
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+        }
+
+        .btn-download:hover {
+            background-color: var(--tiger-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.18);
+        }
+
+        /* Step Instructions List */
+        .steps-wrapper {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .steps-wrapper h3 {
+            font-size: 1.3rem;
+            color: var(--tiger-black);
+            margin-bottom: 1rem;
+        }
+
+        .steps-list {
+            padding-left: 1.2rem;
+        }
+
+        .steps-list li {
+            margin-bottom: 0.75rem;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-wrapper img {
+                width: 130px;
+                max-height: 130px;
+            }
+            .header-text h1 {
+                font-size: 2rem;
+            }
+            .nav-container {
+                justify-content: center;
+            }
+        }
+
+        footer {
+            background-color: var(--tiger-black);
+            color: #aaaaaa;
+            text-align: center;
+            padding: 1.75rem;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            border-top: 3px solid var(--tiger-gold);
+        }
+
+        footer a {
+            color: var(--tiger-gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <img src="tigerhead.svg" alt="Tiger Technology Department Logo">
+            </div>
+            <div class="header-text">
+                <h1>Tiger Technology Department</h1>
+                <p>Excelsior Springs School District #40</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home & Support</a>
+            <a href="links.html" class="nav-link">Staff & Student Links</a>
+            <a href="wifi.html" class="nav-link active">Wi-Fi & Security</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-heading">District Wi-Fi Access & Setup</h2>
+
+        <!-- Wi-Fi Network Options -->
+        <div class="wifi-grid">
+            
+            <!-- School Devices Network -->
+            <div class="wifi-card">
+                <span class="wifi-badge">School-Owned Devices</span>
+                <h3>📶 TIGERS</h3>
+                <p>Managed Wi-Fi network reserved exclusively for ESSD-owned Chromebooks, laptops, and staff workstations.</p>
+                <ul class="wifi-details">
+                    <li>🔐 <strong>Password:</strong> Automatically Configured</li>
+                    <li>📱 <strong>Devices:</strong> District-owned devices only</li>
+                    <li>⚡ <strong>Access:</strong> Auto-connects on campus</li>
+                </ul>
+            </div>
+
+            <!-- Public / Personal Devices Network -->
+            <div class="wifi-card public">
+                <span class="wifi-badge">Personal Devices</span>
+                <h3>📶 ESSD-Public</h3>
+                <p>Open Wi-Fi network for personal phones, tablets, guest devices, and BYOD laptops on campus.</p>
+                <ul class="wifi-details">
+                    <li>🔓 <strong>Password:</strong> None (Open Access)</li>
+                    <li>📱 <strong>Devices:</strong> Personal smartphones, tablets, laptops</li>
+                    <li>🔒 <strong>Requirement:</strong> Securly Certificate required for browsing</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Certificate Download Section -->
+        <section class="cert-card">
+            <h3>🔒 Securly SSL Certificate Installation</h3>
+            <p>To access web pages securely through <strong>ESSD-Public</strong> without security warnings or blocked sites, personal devices must have the official Securly SSL certificate installed.</p>
+            
+            <!-- Direct Download Button for Certificate File -->
+            <!-- Note: Upload your securly_ca_2026.crt file to your repository root -->
+            <a href="securly_ca_2026.crt" download class="btn-download">
+                📥 Download Securly Certificate (.crt)
+            </a>
+        </section>
+
+        <!-- Setup Instructions -->
+        <section class="steps-wrapper">
+            <h3>Quick Installation Instructions</h3>
+            <ol class="steps-list">
+                <li>Connect your personal device to the <strong>ESSD-Public</strong> Wi-Fi network.</li>
+                <li>Tap the <strong>Download Securly Certificate</strong> button above to download the certificate file.</li>
+                <li>Open the downloaded file on your device:
+                    <ul>
+                        <li><strong>iOS / iPhone:</strong> Go to <em>Settings &rarr; Profile Downloaded &rarr; Install</em>, then enable trust under <em>Settings &rarr; General &rarr; About &rarr; Certificate Trust Settings</em>.</li>
+                        <li><strong>Android:</strong> Go to <em>Settings &rarr; Security / Encryption &rarr; Install from storage / CA Certificate</em> and select the downloaded certificate file.</li>
+                        <li><strong>Windows / Mac:</strong> Double-click the file and follow the Certificate Import Wizard to place it in the <em>Trusted Root Certification Authorities</em> store.</li>
+                    </ul>
+                </li>
+                <li>Once installed, open your browser to begin browsing.</li>
+            </ol>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
+    </footer>
+
+</body>
+</html>
