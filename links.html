@@ -72,6 +72,7 @@
         nav {
             background-color: var(--tiger-dark-gray);
             border-bottom: 2px solid #333;
+            position: relative;
         }
 
         .nav-container {
@@ -79,7 +80,13 @@
             margin: 0 auto;
             padding: 0 1rem;
             display: flex;
-            gap: 1rem;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
         }
 
         .nav-link {
@@ -94,6 +101,19 @@
         .nav-link:hover, .nav-link.active {
             background-color: var(--tiger-gold);
             color: var(--tiger-black);
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: right;
         }
 
         .container {
@@ -115,7 +135,7 @@
         /* Portal Cards Grid - Set to 3 Columns */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Exactly 3 cards per row */
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
@@ -139,7 +159,6 @@
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
         }
 
-        /* Card Image Container */
         .card-img-wrapper {
             width: 80px;
             height: 80px;
@@ -197,11 +216,11 @@
         /* Responsive Breakpoints */
         @media (max-width: 900px) {
             .links-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             header {
                 padding: 2rem 1rem;
             }
@@ -216,11 +235,30 @@
             .header-text h1 {
                 font-size: 2rem;
             }
-            .nav-container {
-                justify-content: center;
+
+            /* Mobile Menu Styles */
+            .menu-toggle {
+                display: block;
             }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-menu.show {
+                display: flex;
+            }
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid #333;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
             .links-grid {
-                grid-template-columns: 1fr; /* 1 column on smartphones */
+                grid-template-columns: 1fr;
             }
         }
 
@@ -255,14 +293,17 @@
         </div>
     </header>
 
-    <!-- Top Navigation -->
-<nav>
-    <div class="nav-container">
-        <a href="index.html" class="nav-link">Home & Support</a>
-        <a href="links.html" class="nav-link">Staff & Student Links</a>
-        <a href="wifi.html" class="nav-link">Wi-Fi & Security</a>
-    </div>
-</nav>
+    <!-- Top Navigation Menu with Mobile Toggle -->
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">☰ Menu</button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home & Support</a>
+                <a href="links.html" class="nav-link active">Staff & Student Links</a>
+                <a href="wifi.html" class="nav-link">Wi-Fi & Security</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
         <h2 class="page-heading">District Portals & Quick Links</h2>
@@ -360,7 +401,7 @@
             <!-- Pay Device Insurance -->
             <a href="https://essd40.revtrak.net/" target="_blank" rel="noopener" class="portal-card">
                 <div class="card-img-wrapper">
-                    <img src="revtrak.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Pay Device Insurance">
+                    <img src="revtrack.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Pay Device Insurance">
                     <span class="placeholder-icon" style="display:none;">💳</span>
                 </div>
                 <div class="portal-title">Device Insurance</div>
@@ -374,6 +415,16 @@
     <footer>
         <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
     </footer>
+
+    <!-- Script for Mobile Menu Toggle -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
