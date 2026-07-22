@@ -82,6 +82,34 @@
             font-weight: 500;
         }
 
+        /* Top Navigation Bar */
+        nav {
+            background-color: var(--tiger-dark-gray);
+            border-bottom: 2px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+        }
+
         /* Responsive adjustments for mobile screens */
         @media (max-width: 768px) {
             header {
@@ -96,14 +124,17 @@
                 text-align: center;
             }
             .logo-wrapper img {
-                width: 130px;
-                max-height: 130px;
+                width: 170px;
+                max-height: 170px;
             }
             header h1 {
                 font-size: 2rem;
             }
             header p {
                 font-size: 1.05rem;
+            }
+            .nav-container {
+                justify-content: center;
             }
         }
 
@@ -296,6 +327,14 @@
         </div>
     </header>
 
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link active">Home & Support</a>
+            <a href="links.html" class="nav-link">Staff & Student Links</a>
+        </div>
+    </nav>
+
     <div class="container">
         
         <!-- Main Help Desk Portal CTA -->
@@ -403,7 +442,7 @@
             <!-- About / Services -->
             <div class="card">
                 <h3>Department Overview</h3>
-                <p>The Tiger Technology Department powers classroom innovation and district infrastructure—supporting staff and student devices, network security, software access, and hardware maintenance across all ESSD #40 schools.</p>
+                <p>TigerTech powers classroom innovation and district infrastructure—supporting staff and student devices, network security, software access, and hardware maintenance across all ESSD #40 schools.</p>
             </div>
 
         </div>
