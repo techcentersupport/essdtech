@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff & Student Links | ESSD #40 TigerTech</title>
+    <style>
+        :root {
+            --tiger-gold: #FFB81C;
+            --tiger-gold-hover: #e0a012;
+            --tiger-black: #111111;
+            --tiger-dark-gray: #1e1e1e;
+            --light-bg: #f4f5f7;
+            --dark-text: #222222;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--tiger-black);
+            color: white;
+            padding: 2rem 2rem;
+            border-bottom: 5px solid var(--tiger-gold);
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        .logo-wrapper img {
+            width: 120px;
+            height: auto;
+            max-height: 120px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-text h1 {
+            font-size: 2.25rem;
+            color: var(--tiger-gold);
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .header-text p {
+            font-size: 1.1rem;
+            color: #dddddd;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--tiger-dark-gray);
+            border-bottom: 2px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .page-heading {
+            font-size: 1.8rem;
+            color: var(--tiger-black);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--tiger-gold);
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        /* Portal Cards Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portal-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--tiger-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Card Image Container (Supports future upload images) */
+        .card-img-wrapper {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Fallback SVG Icon if no custom image is uploaded */
+        .placeholder-icon {
+            font-size: 2.2rem;
+            color: var(--tiger-black);
+        }
+
+        .portal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--tiger-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .portal-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .btn-launch {
+            background-color: var(--tiger-black);
+            color: var(--tiger-gold);
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+
+        .portal-card:hover .btn-launch {
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-container {
+                justify-content: center;
+            }
+        }
+
+        footer {
+            background-color: var(--tiger-black);
+            color: #aaaaaa;
+            text-align: center;
+            padding: 1.75rem;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            border-top: 3px solid var(--tiger-gold);
+        }
+
+        footer a {
+            color: var(--tiger-gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <img src="tigerhead.svg" alt="Tiger Technology Department Logo">
+            </div>
+            <div class="header-text">
+                <h1>Tiger Technology Department</h1>
+                <p>Excelsior Springs School District #40</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Simple Top Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home & Support</a>
+            <a href="links.html" class="nav-link active">Staff & Student Links</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-heading">District Portals & Quick Links</h2>
+
+        <div class="links-grid">
+
+            <!-- School Email -->
+            <a href="https://mail.google.com" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'email.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="email.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="School Email">
+                    <span class="placeholder-icon" style="display:none;">📧</span>
+                </div>
+                <div class="portal-title">School Email</div>
+                <div class="portal-desc">Access your district Gmail inbox and messages.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- Google Drive -->
+            <a href="https://drive.google.com" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'drive.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="drive.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Google Drive">
+                    <span class="placeholder-icon" style="display:none;">📁</span>
+                </div>
+                <div class="portal-title">Google Drive</div>
+                <div class="portal-desc">Cloud storage for documents, sheets, and slides.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- PowerSchool -->
+            <a href="https://estigers.powerschool.com/public/" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'powerschool.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="powerschool.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="PowerSchool">
+                    <span class="placeholder-icon" style="display:none;">📊</span>
+                </div>
+                <div class="portal-title">PowerSchool</div>
+                <div class="portal-desc">Student grades, attendance, and schedules.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- Clever -->
+            <a href="https://clever.com/oauth/authorize?channel=clever&client_id=4c63c1cf623dce82caac&confirmed=true&district_id=57d6ccf56d96fb0100000291&redirect_uri=https%3A%2F%2Fclever.com%2Fin%2Fauth_callback&response_type=code&state=62cd6e9f4e088aaee93b1dcfefbba1c4ff60eef0523cc4e61fbdaede942af0df" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'clever.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="clever.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Clever">
+                    <span class="placeholder-icon" style="display:none;">🔑</span>
+                </div>
+                <div class="portal-title">Clever Portal</div>
+                <div class="portal-desc">Single sign-on access to district learning apps.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- Canvas -->
+            <a href="https://excelsiorsprings.instructure.com/login/canvas" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'canvas.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="canvas.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Canvas">
+                    <span class="placeholder-icon" style="display:none;">🎨</span>
+                </div>
+                <div class="portal-title">Canvas</div>
+                <div class="portal-desc">Learning management system for coursework and assignments.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- Seesaw -->
+            <a href="https://seesaw.com/" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'seesaw.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="seesaw.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Seesaw">
+                    <span class="placeholder-icon" style="display:none;">💡</span>
+                </div>
+                <div class="portal-title">Seesaw</div>
+                <div class="portal-desc">Elementary student engagement and digital portfolio.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- IXL -->
+            <a href="https://www.ixl.com/signin" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'ixl.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="ixl.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="IXL Learning">
+                    <span class="placeholder-icon" style="display:none;">✏️</span>
+                </div>
+                <div class="portal-title">IXL Learning</div>
+                <div class="portal-desc">Interactive curriculum and skill practice.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- Follett Destiny -->
+            <a href="https://essd40library.follettdestiny.com/portal?appId=destiny-RKLR-CXKB" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'destiny.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="destiny.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Follett Destiny">
+                    <span class="placeholder-icon" style="display:none;">📚</span>
+                </div>
+                <div class="portal-title">Follett Destiny</div>
+                <div class="portal-desc">District library media catalog and search portal.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+            <!-- Pay Device Insurance -->
+            <a href="https://essd40.revtrak.net/" target="_blank" rel="noopener" class="portal-card">
+                <div class="card-img-wrapper">
+                    <!-- REPLACE 'revtrak.png' WITH YOUR IMAGE FILE IN THE FUTURE -->
+                    <img src="revtrak.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" alt="Pay Device Insurance">
+                    <span class="placeholder-icon" style="display:none;">💳</span>
+                </div>
+                <div class="portal-title">Device Insurance</div>
+                <div class="portal-desc">Pay student Chromebook and device protection fees via RevTrak.</div>
+                <div class="btn-launch">Launch Portal &rarr;</div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
+    </footer>
+
+</body>
+</html>
