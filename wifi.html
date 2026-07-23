@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wi-Fi Access & Certificate | ESSD #40 TigerTech</title>
+    <title>Wi-Fi & Security | ESSD #40 TigerTech</title>
     <style>
         :root {
             --tiger-gold: #FFB81C;
@@ -132,136 +132,75 @@
             display: inline-block;
         }
 
-        /* Wi-Fi Networks Grid */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--tiger-gold);
+            margin-bottom: 2rem;
+        }
+
+        .card-badge {
+            background-color: var(--tiger-black);
+            color: var(--tiger-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .card h2 {
+            margin: 1rem 0 0.5rem 0;
+            color: var(--tiger-black);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--tiger-gold);
+            color: var(--tiger-black);
+            padding: 0.9rem 1.75rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--tiger-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .instruction-list {
+            padding-left: 1.2rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
         .wifi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .wifi-card {
             background: white;
+            padding: 1.5rem;
             border-radius: 10px;
-            padding: 1.75rem;
             box-shadow: var(--card-shadow);
-            border-top: 5px solid var(--tiger-gold);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .wifi-card.public {
-            border-top-color: var(--tiger-black);
-        }
-
-        .wifi-badge {
-            display: inline-block;
-            align-self: flex-start;
-            background-color: #eee;
-            color: #333;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
+            border-left: 5px solid var(--tiger-black);
         }
 
         .wifi-card h3 {
-            font-size: 1.6rem;
             color: var(--tiger-black);
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .wifi-card p {
-            color: #555;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .wifi-details {
-            list-style: none;
-            background-color: var(--light-bg);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            margin-top: auto;
-        }
-
-        .wifi-details li {
-            margin-bottom: 0.4rem;
-        }
-
-        .wifi-details li:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Certificate Download Section */
-        .cert-card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
-            border-left: 6px solid var(--tiger-gold);
-            margin-bottom: 2rem;
-        }
-
-        .cert-card h3 {
-            font-size: 1.5rem;
-            color: var(--tiger-black);
-            margin-bottom: 0.75rem;
-        }
-
-        .cert-card p {
-            color: #444;
-            margin-bottom: 1.25rem;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: var(--tiger-gold);
-            color: var(--tiger-black);
-            font-size: 1.1rem;
-            font-weight: bold;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-        }
-
-        .btn-download:hover {
-            background-color: var(--tiger-gold-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0,0,0,0.18);
-        }
-
-        /* Step Instructions List */
-        .steps-wrapper {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        .steps-wrapper h3 {
-            font-size: 1.3rem;
-            color: var(--tiger-black);
-            margin-bottom: 1rem;
-        }
-
-        .steps-list {
-            padding-left: 1.2rem;
-        }
-
-        .steps-list li {
-            margin-bottom: 0.75rem;
-            color: #444;
         }
 
         @media (max-width: 768px) {
@@ -280,7 +219,6 @@
                 font-size: 2rem;
             }
 
-            /* Mobile Menu Styles */
             .menu-toggle {
                 display: block;
             }
@@ -331,78 +269,59 @@
         </div>
     </header>
 
-    <!-- Top Navigation Menu with Mobile Toggle -->
-<nav>
-    <div class="nav-container">
-        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">☰ Menu</button>
-        <div class="nav-menu" id="nav-menu">
-            <a href="index.html" class="nav-link">Home & Support</a>
-            <a href="links.html" class="nav-link">Staff & Student Links</a>
-            <a href="wifi.html" class="nav-link">Wi-Fi & Security</a>
-            <a href="howdoi.html" class="nav-link">How Do I?</a>
+    <!-- Top Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">☰ Menu</button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home & Support</a>
+                <a href="links.html" class="nav-link">Staff & Student Links</a>
+                <a href="wifi.html" class="nav-link active">Wi-Fi & Security</a>
+                <a href="howdoi.html" class="nav-link">How Do I?</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="container">
-        <h2 class="page-heading">District Wi-Fi Access & Setup</h2>
+        <h2 class="page-heading">Wi-Fi Networks & Security Setup</h2>
 
-        <!-- Wi-Fi Network Options -->
+        <!-- Available Networks Overview Grid -->
         <div class="wifi-grid">
-            
-            <!-- School Devices Network -->
             <div class="wifi-card">
-                <span class="wifi-badge">School-Owned Devices</span>
-                <h3>📶 TIGERS</h3>
-                <p>Managed Wi-Fi network reserved exclusively for ESSD-owned Chromebooks, laptops, and staff workstations.</p>
-                <ul class="wifi-details">
-                    <li>🔐 <strong>Password:</strong> Automatically Configured</li>
-                    <li>📱 <strong>Devices:</strong> District-owned devices only</li>
-                    <li>⚡ <strong>Access:</strong> Auto-connects on campus</li>
-                </ul>
+                <h3>📶 TIGERS Network</h3>
+                <p><strong>For:</strong> District-owned Chromebooks, laptops, and staff devices.</p>
+                <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Connects automatically on managed district hardware.</p>
             </div>
-
-            <!-- Public / Personal Devices Network -->
-            <div class="wifi-card public">
-                <span class="wifi-badge">Personal Devices</span>
-                <h3>📶 ESSD-Public</h3>
-                <p>Open Wi-Fi network for personal phones, tablets, guest devices, and BYOD laptops on campus.</p>
-                <ul class="wifi-details">
-                    <li>🔓 <strong>Password:</strong> None (Open Access)</li>
-                    <li>📱 <strong>Devices:</strong> Personal smartphones, tablets, laptops</li>
-                    <li>🔒 <strong>Requirement:</strong> Securly Certificate required for browsing</li>
-                </ul>
+            <div class="wifi-card">
+                <h3>📶 ESSD-Public Network</h3>
+                <p><strong>For:</strong> Personal phones, tablets, and guest devices.</p>
+                <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Requires the Securly SSL Certificate below for full web browsing.</p>
             </div>
-
         </div>
 
-        <!-- Certificate Download Section -->
-        <section class="cert-card">
-            <h3>🔒 Securly SSL Certificate Installation</h3>
-            <p>To access web pages securely through <strong>ESSD-Public</strong> without security warnings or blocked sites, personal devices must have the official Securly SSL certificate installed.</p>
-            
-            <!-- Direct Download Button for Certificate File -->
-            <a href="securly_ca_2026.crt" download class="btn-download">
-                📥 Download Securly Certificate (.crt)
-            </a>
-        </section>
+        <!-- Securly SSL Certificate Download Card -->
+        <div class="card">
+            <span class="card-badge">Security Required</span>
+            <h2>Securly SSL Certificate Installation</h2>
+            <p style="margin-bottom: 1.5rem; color: #444;">
+                If you are using a personal device on the <strong>ESSD-Public</strong> Wi-Fi network, you must download and trust the district Securly SSL Certificate to browse HTTPS websites without connection warnings or security blocks.
+            </p>
 
-        <!-- Setup Instructions -->
-        <section class="steps-wrapper">
-            <h3>Quick Installation Instructions</h3>
-            <ol class="steps-list">
-                <li>Connect your personal device to the <strong>ESSD-Public</strong> Wi-Fi network.</li>
-                <li>Tap the <strong>Download Securly Certificate</strong> button above to download the certificate file.</li>
-                <li>Open the downloaded file on your device:
-                    <ul>
-                        <li><strong>iOS / iPhone:</strong> Go to <em>Settings &rarr; Profile Downloaded &rarr; Install</em>, then enable trust under <em>Settings &rarr; General &rarr; About &rarr; Certificate Trust Settings</em>.</li>
-                        <li><strong>Android:</strong> Go to <em>Settings &rarr; Security / Encryption &rarr; Install from storage / CA Certificate</em> and select the downloaded certificate file.</li>
-                        <li><strong>Windows / Mac:</strong> Double-click the file and follow the Certificate Import Wizard to place it in the <em>Trusted Root Certification Authorities</em> store.</li>
-                    </ul>
-                </li>
-                <li>Once installed, open your browser to begin browsing.</li>
-            </ol>
-        </section>
+            <!-- Self-Hosted Direct Download Button -->
+            <div style="margin-bottom: 2rem;">
+                <a href="securly_ca_2034.crt" download="securly_ca_2034.crt" class="download-btn">
+                    📥 Download Securly SSL Certificate (.crt)
+                </a>
+            </div>
+
+            <h3 style="margin-bottom: 0.5rem; color: var(--tiger-black);">Installation Steps by Device:</h3>
+            <ul class="instruction-list">
+                <li><strong>iPhone / iPad (iOS):</strong> Tap the download button above. Go to <em>Settings &rarr; Profile Downloaded &rarr; Install</em>. Once installed, go to <em>Settings &rarr; General &rarr; About &rarr; Certificate Trust Settings</em> and enable full trust for Securly.</li>
+                <li><strong>Android:</strong> Tap the download button above. Go to <em>Settings &rarr; Security & Privacy &rarr; More Security Settings &rarr; Encryption & Credentials &rarr; Install a Certificate &rarr; CA Certificate</em> and select the downloaded file.</li>
+                <li><strong>Mac (macOS):</strong> Download the file, double-click it to open <strong>Keychain Access</strong>, import it into the <em>System</em> keychain, right-click the Securly certificate, select <em>Get Info</em>, and set Trust to <strong>Always Trust</strong>.</li>
+                <li><strong>Windows:</strong> Download the file, right-click it, select <strong>Install Certificate</strong>, choose <em>Local Machine</em>, and place it in the <strong>Trusted Root Certification Authorities</strong> store.</li>
+            </ul>
+        </div>
 
     </div>
 
@@ -410,7 +329,7 @@
         <p>&copy; Excelsior Springs School District #40 | <a href="https://essd40.org">essd40.org</a> | Tiger Tech</p>
     </footer>
 
-    <!-- Script for Mobile Menu Toggle -->
+    <!-- Mobile Navigation Script -->
     <script>
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
